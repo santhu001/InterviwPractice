@@ -23,7 +23,10 @@ public class LogicalExampls {
         //System.out.println( exampls.emailValidtion("santhoshgouderukala@gmail.com"));
         // System.out.println(exampls.isPalindrom(12121));
         //exampls.printtDimond();
-        System.out.println(exampls.permutations("ABC"));
+       // System.out.println(exampls.permutations("ABC"));
+        //System.out.println(exampls.isAnagram("abcdefgoudhIJKLMNopqrsanthutuvwxyz"));
+        //System.out.println(exampls.stringReplace("aabbaa", 'b','a'));
+        exampls.printPrimenubers(20);
     }
 
     public void divisableBy7_sumOfdigitsis7(int range) {
@@ -155,4 +158,55 @@ public class LogicalExampls {
         }
         return perm;
     }
+    public  boolean isAnagram(String word){
+        String regex="[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]*";
+        Pattern p=Pattern.compile(regex);
+        Matcher m= p.matcher(word);
+        return  m.matches();
+    }
+    public String stringReplace(String str,char old,char ne){
+        char [] replace=str.toCharArray();
+        for(int i=0;i<replace.length;i++){
+            if(replace[i]==old){
+                replace[i]=ne;
+            }
+        }
+        return new String(replace);
+    }
+    public void PrintFibonasiWithArray(int size){
+        int[] fibo=new int[size];
+        
+        fibo[0]=0;
+        fibo[1]=1;
+        for (int i = 2; i < fibo.length; i++) {
+           fibo[i]=fibo[i-1]+fibo[i-2];
+        }
+        for (int i : fibo) {
+            System.out.print(i+" ");
+        }
+    }
+    public void PrintFibonasi(int size){
+        int first=0,second=1,temp=0;
+        System.out.print("FibonacciSeries: "+ first+" "+second+" ");
+        for (int i = 0; i < size; i++) {
+            temp=first+second;
+            first=second;
+            second=temp;
+            System.out.print(temp+" ");
+        }
+    }
+    public void printPrimenubers(int limit){
+      
+        for (int i = 0; i < limit; i++) {
+            int flag=0;
+            for (int j = 2; j <= Math.sqrt(i); j++) {
+                if(i%j==0)
+                    flag++;
+            }
+            if(flag==0 && i>1){
+                System.out.print(i+" ");
+            }
+        }
+    }
+    
 }
